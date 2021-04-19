@@ -16,7 +16,7 @@ const sauce = () => cy.get(`[type="radio"]`)
 const name = () => cy.get(`input[name="name"]`)
 
 // add text to the box
-const words = 'words and stuff';
+const words = 'wear a stupid hat';
 it('can add text to the box', () => {
     textArea().should('exist')
     textArea().type(words)
@@ -38,6 +38,7 @@ it('can submit the form', () => {
     checkBoxes().check()
     textArea().type(words)
     name().type('Bocephus')
+    submitButton().should('be.enabled')
     submitButton().click()
 } )
 

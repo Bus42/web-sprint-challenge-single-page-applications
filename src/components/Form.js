@@ -43,7 +43,7 @@ const Form = (props) => {
 
   const handleChange = (e) => {
     const { name, value, checked } = e.target;
-    const val = value ? value : checked;
+    const val = value !== 'on' ? value : checked; //account for checkboxes and radio buttons
 
     yup
       .reach(schema, name)
@@ -337,6 +337,16 @@ const Form = (props) => {
               <label htmlFor="ham">Ham</label>
             </div>
           </div>
+        </div>
+        {/* gluten-free toggle */}
+        <div className="glutenToggle">
+          <input
+            type="checkbox"
+            name="glutenFree"
+            checked={formData.glutenFree}
+            onChange={handleChange}
+          />
+          <label htmlFor="glutenToggle">Gluten-Free Crust</label>
         </div>
         {/* special instructions */}
         <div className="instructions">

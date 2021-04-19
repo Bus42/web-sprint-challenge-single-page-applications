@@ -20,7 +20,7 @@ const Confirmation = (props) => {
           <span key={index}>{topping}, </span>
         ))}
         and our special herbs and spices delivered hot and fresh to your door!
-        And, we'll make sure to {instructions}
+        And, we'll make sure to {instructions}!
       </p>
       <button onClick={clearConfirmation}>Got it!</button>
     </div>
