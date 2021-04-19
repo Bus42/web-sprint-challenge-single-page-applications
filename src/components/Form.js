@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 const Form = (props) => {
+  const { submit } = props;
   const initialFormData = {
     size: "",
     sauce: "",
@@ -22,23 +23,7 @@ const Form = (props) => {
     },
     glutenFree: false,
     specialInstructions: "",
-    quantity: 1,
-  };
-  const initialToppings = {
-    pepperoni: false,
-    pineapple: false,
-    olives: false,
-    bacon: false,
-    sausage: false,
-    hamburger: false,
-    chicken: false,
-    cheddar: false,
-    mozzarella: false,
-    sardines: false,
-    mushrooms: false,
-    onions: false,
-    peppers: false,
-    ham: false,
+    name: "",
   };
   const [formData, setFormData] = useState(initialFormData);
   const handleChange = (e) => {
@@ -53,6 +38,19 @@ const Form = (props) => {
     newFormData.toppings = selectedToppings;
     setFormData(newFormData);
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const dataToSubmit = { ...formData };
+    const toppingsArray = [];
+    for (const p in formData.toppings) {
+      if (formData.toppings[p]) {
+        toppingsArray.push(p);
+      } // push all properties with value == true into toppingsArray
+    }
+    dataToSubmit.toppings = toppingsArray;
+    submit(dataToSubmit);
+    setFormData(initialFormData);
+  };
   return (
     <form
       style={{
@@ -63,6 +61,7 @@ const Form = (props) => {
         width: "clamp(400px, 35vw, 800px)",
       }}
       action="submit"
+      onSubmit={handleSubmit}
     >
       {/* size dropdown */}
       <div
@@ -149,7 +148,6 @@ const Form = (props) => {
             <input
               type="checkbox"
               name="pepperoni"
-              value="pepperoni"
               checked={formData.toppings.pepperoni}
               onChange={handleToppings}
             />
@@ -159,7 +157,6 @@ const Form = (props) => {
             <input
               type="checkbox"
               name="pineapple"
-              value="pineapple"
               checked={formData.toppings.pineapple}
               onChange={handleToppings}
             />
@@ -169,7 +166,6 @@ const Form = (props) => {
             <input
               type="checkbox"
               name="olives"
-              value="olives"
               checked={formData.toppings.olives}
               onChange={handleToppings}
             />
@@ -179,7 +175,6 @@ const Form = (props) => {
             <input
               type="checkbox"
               name="bacon"
-              value="bacon"
               checked={formData.toppings.bacon}
               onChange={handleToppings}
             />
@@ -189,7 +184,6 @@ const Form = (props) => {
             <input
               type="checkbox"
               name="sausage"
-              value="sausage"
               checked={formData.toppings.sausage}
               onChange={handleToppings}
             />
@@ -199,7 +193,6 @@ const Form = (props) => {
             <input
               type="checkbox"
               name="hamburger"
-              value="hamburger"
               checked={formData.toppings.hamburger}
               onChange={handleToppings}
             />
@@ -209,7 +202,6 @@ const Form = (props) => {
             <input
               type="checkbox"
               name="chicken"
-              value="chicken"
               checked={formData.toppings.chicken}
               onChange={handleToppings}
             />
@@ -224,7 +216,6 @@ const Form = (props) => {
             <input
               type="checkbox"
               name="cheddar"
-              value="cheddar"
               checked={formData.toppings.cheddar}
               onChange={handleToppings}
             />
@@ -234,7 +225,6 @@ const Form = (props) => {
             <input
               type="checkbox"
               name="mozzarella"
-              value="mozzarella"
               checked={formData.toppings.mozzarella}
               onChange={handleToppings}
             />
@@ -244,7 +234,6 @@ const Form = (props) => {
             <input
               type="checkbox"
               name="sardines"
-              value="sardines"
               checked={formData.toppings.sardines}
               onChange={handleToppings}
             />
@@ -254,7 +243,6 @@ const Form = (props) => {
             <input
               type="checkbox"
               name="mushrooms"
-              value="mushrooms"
               checked={formData.toppings.mushrooms}
               onChange={handleToppings}
             />
@@ -264,7 +252,6 @@ const Form = (props) => {
             <input
               type="checkbox"
               name="onions"
-              value="onions"
               checked={formData.toppings.onions}
               onChange={handleToppings}
             />
@@ -274,7 +261,6 @@ const Form = (props) => {
             <input
               type="checkbox"
               name="peppers"
-              value="peppers"
               checked={formData.toppings.peppers}
               onChange={handleToppings}
             />
@@ -284,7 +270,6 @@ const Form = (props) => {
             <input
               type="checkbox"
               name="ham"
-              value="ham"
               checked={formData.toppings.ham}
               onChange={handleToppings}
             />
@@ -292,6 +277,35 @@ const Form = (props) => {
           </div>
         </div>
       </div>
+      {/* gluten-free toggle */}
+      <div className="glutenToggle">
+        <input
+          type="checkbox"
+          name="glutenFree"
+          checked={formData.glutenFree}
+          onChange={handleChange}
+        />
+        <label htmlFor="glutenToggle">Gluten-Free Crust</label>
+      </div>
+      {/* special instructions */}
+      <div className="instructions">
+        <label htmlFor="instructions">Special Instructions</label>
+        <textarea
+          name="specialInstructions"
+          id="instructions"
+          cols="30"
+          rows="10"
+          onChange={handleChange}
+        ></textarea>
+      </div>
+      <label htmlFor="name">Enter a name for your order</label>
+      <input
+        type="text"
+        name="name"
+        placeholder="Enter name"
+        onChange={handleChange}
+      />
+      <button type="submit">Make it so!</button>
     </form>
   );
 };
