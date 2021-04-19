@@ -6,14 +6,18 @@ describe('Lambda Eats', () => {
     it ('sanity checks', () => {
         expect(42).to.equal(42);
     })
-})
+    
 
 const textArea = () => cy.get(`textarea[name=specialInstructions]`)
 // add text to the box
+const words = 'words and stuff';
 it('can add text to the box', () => {
     textArea().should('exist')
+    textArea().type(words)
+    textArea().should('have.value', words)
 })
 
 // select multiple toppings
 
 // submit the form
+})
