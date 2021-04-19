@@ -366,7 +366,7 @@ const Form = (props) => {
           placeholder="Enter name"
           onChange={handleChange}
         />
-        <button type="submit" disabled={disabled}>
+        <button id="submitButton" type="submit" disabled={disabled}>
           Make it so!
         </button>
       </form>

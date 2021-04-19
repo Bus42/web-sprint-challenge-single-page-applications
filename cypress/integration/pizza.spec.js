@@ -10,7 +10,7 @@ describe('Lambda Eats', () => {
 
 const textArea = () => cy.get(`textarea[name=specialInstructions]`);
 const checkBoxes = () => cy.get('[type="checkbox"]');
-
+const submitButton = () => cy.get(`#submitButton`)
 
 // add text to the box
 const words = 'words and stuff';
@@ -27,4 +27,10 @@ it('can select multiple toppings', () => {
 
 
 // submit the form
+it('can submit the form', () => {
+    submitButton().should('exist')
+    submitButton().should('be.disabled')
+    
+} )
+
 })
