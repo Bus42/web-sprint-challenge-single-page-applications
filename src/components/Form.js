@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Confirmation from "./Confirmation";
 
 const Form = (props) => {
   const { submit } = props;
@@ -26,6 +27,7 @@ const Form = (props) => {
     name: "",
   };
   const [formData, setFormData] = useState(initialFormData);
+  const [submitted, setSubmitted] = useState(false);
   const handleChange = (e) => {
     const { name, value, checked } = e.target;
     const val = value ? value : checked;
@@ -38,20 +40,39 @@ const Form = (props) => {
     newFormData.toppings = selectedToppings;
     setFormData(newFormData);
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const dataToSubmit = { ...formData };
+  const filterToppings = (data) => {
     const toppingsArray = [];
-    for (const p in formData.toppings) {
-      if (formData.toppings[p]) {
+    for (const p in data) {
+      if (data[p]) {
         toppingsArray.push(p);
       } // push all properties with value == true into toppingsArray
     }
+    return toppingsArray;
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const dataToSubmit = { ...formData };
+    const toppingsArray = filterToppings(formData.toppings);
     dataToSubmit.toppings = toppingsArray;
     submit(dataToSubmit);
-    setFormData(initialFormData);
+    setSubmitted(true);
   };
-  return (
+  const clearConfirmation = (e) => {
+    e.preventDefault();
+    setFormData(initialFormData);
+    setSubmitted(false);
+  };
+  return submitted ? (
+    <Confirmation
+      name={formData.name}
+      size={formData.size}
+      glutenFree={formData.glutenFree}
+      sauce={formData.sauce}
+      toppings={filterToppings(formData.toppings)}
+      instructions={formData.specialInstructions}
+      clearConfirmation={clearConfirmation}
+    />
+  ) : (
     <form
       style={{
         display: "flex",
@@ -72,13 +93,13 @@ const Form = (props) => {
         <small>required</small>
         <select name="size" id="size" onChange={handleChange}>
           <option value={null}>Select a size</option>
-          <option value="sm">Small - 8"</option>
-          <option value="md">Medium - 12"</option>
-          <option value="lg">Large - 14"</option>
-          <option value="xl">Super - 18"</option>
+          <option value="small">Small - 8"</option>
+          <option value="medium">Medium - 12"</option>
+          <option value="large">Large - 14"</option>
+          <option value="extra-large">Super - 18"</option>
         </select>
       </div>
-      {/* radio buttons */}
+      {/* sauce radio buttons */}
       <div
         style={{
           display: "inline-flex",
