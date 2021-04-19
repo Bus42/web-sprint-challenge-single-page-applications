@@ -1,7 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
-import Pizza from "./components/Pizza";
+import Form from "./components/Form";
+
+const submit = (order) => {
+  console.log(order);
+};
 
 const App = () => {
   return (
@@ -9,7 +13,7 @@ const App = () => {
       <Router>
         <Switch>
           <Route path="/pizza">
-            <Pizza />
+            <Form submit={submit} />
           </Route>
           <Route path="/">
             <Home />
