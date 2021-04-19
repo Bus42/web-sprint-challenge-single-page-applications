@@ -338,16 +338,6 @@ const Form = (props) => {
             </div>
           </div>
         </div>
-        {/* gluten-free toggle */}
-        <div className="glutenToggle">
-          <input
-            type="checkbox"
-            name="glutenFree"
-            checked={formData.glutenFree}
-            onChange={handleChange}
-          />
-          <label htmlFor="glutenToggle">Gluten-Free Crust</label>
-        </div>
         {/* special instructions */}
         <div className="instructions">
           <label htmlFor="instructions">Special Instructions</label>

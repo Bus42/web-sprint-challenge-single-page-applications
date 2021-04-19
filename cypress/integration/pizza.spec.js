@@ -11,6 +11,9 @@ describe('Lambda Eats', () => {
 const textArea = () => cy.get(`textarea[name=specialInstructions]`);
 const checkBoxes = () => cy.get('[type="checkbox"]');
 const submitButton = () => cy.get(`#submitButton`)
+const size = () => cy.get(`[name="size"]`)
+const sauce = () => cy.get(`[type="radio"]`)
+const name = () => cy.get(`input[name="name"]`)
 
 // add text to the box
 const words = 'words and stuff';
@@ -30,7 +33,12 @@ it('can select multiple toppings', () => {
 it('can submit the form', () => {
     submitButton().should('exist')
     submitButton().should('be.disabled')
-    
+    size().select('Small - 8"')
+    sauce().first().check()
+    checkBoxes().check()
+    textArea().type(words)
+    name().type('Bocephus')
+    submitButton().click()
 } )
 
 })
