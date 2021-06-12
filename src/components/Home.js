@@ -2,8 +2,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const sampleImg = require("../assets/sampleImg.png");
-const pizzaImg = require("../assets/Pizza.jpg");
+import sampleImg from "../assets/sampleImg.png";
+import pizzaImg from "../assets/Pizza.jpg";
 
 const SampleListing = (props) => (
   <div
