@@ -209,6 +209,7 @@ const Form = (props) => {
               <input
                 type="checkbox"
                 name="pepperoni"
+                value="pepperoni"
                 checked={formData.toppings.pepperoni}
                 onChange={handleToppings}
               />
@@ -218,6 +219,7 @@ const Form = (props) => {
               <input
                 type="checkbox"
                 name="pineapple"
+                value="pineapple"
                 checked={formData.toppings.pineapple}
                 onChange={handleToppings}
               />
@@ -227,6 +229,7 @@ const Form = (props) => {
               <input
                 type="checkbox"
                 name="olives"
+                value="olives"
                 checked={formData.toppings.olives}
                 onChange={handleToppings}
               />
@@ -236,6 +239,7 @@ const Form = (props) => {
               <input
                 type="checkbox"
                 name="bacon"
+                value="bacon"
                 checked={formData.toppings.bacon}
                 onChange={handleToppings}
               />
@@ -245,6 +249,7 @@ const Form = (props) => {
               <input
                 type="checkbox"
                 name="sausage"
+                value="sausage"
                 checked={formData.toppings.sausage}
                 onChange={handleToppings}
               />
@@ -254,6 +259,7 @@ const Form = (props) => {
               <input
                 type="checkbox"
                 name="hamburger"
+                value="hamburger"
                 checked={formData.toppings.hamburger}
                 onChange={handleToppings}
               />
@@ -263,6 +269,7 @@ const Form = (props) => {
               <input
                 type="checkbox"
                 name="chicken"
+                value="chicken"
                 checked={formData.toppings.chicken}
                 onChange={handleToppings}
               />
@@ -277,6 +284,7 @@ const Form = (props) => {
               <input
                 type="checkbox"
                 name="cheddar"
+                value="cheddar"
                 checked={formData.toppings.cheddar}
                 onChange={handleToppings}
               />
@@ -286,6 +294,7 @@ const Form = (props) => {
               <input
                 type="checkbox"
                 name="mozzarella"
+                value="mozzarella"
                 checked={formData.toppings.mozzarella}
                 onChange={handleToppings}
               />
@@ -295,6 +304,7 @@ const Form = (props) => {
               <input
                 type="checkbox"
                 name="sardines"
+                value="sardines"
                 checked={formData.toppings.sardines}
                 onChange={handleToppings}
               />
@@ -304,6 +314,7 @@ const Form = (props) => {
               <input
                 type="checkbox"
                 name="mushrooms"
+                value="mushrooms"
                 checked={formData.toppings.mushrooms}
                 onChange={handleToppings}
               />
@@ -313,6 +324,7 @@ const Form = (props) => {
               <input
                 type="checkbox"
                 name="onions"
+                value="onions"
                 checked={formData.toppings.onions}
                 onChange={handleToppings}
               />
@@ -322,6 +334,7 @@ const Form = (props) => {
               <input
                 type="checkbox"
                 name="peppers"
+                value="peppers"
                 checked={formData.toppings.peppers}
                 onChange={handleToppings}
               />
@@ -331,6 +344,7 @@ const Form = (props) => {
               <input
                 type="checkbox"
                 name="ham"
+                value="ham"
                 checked={formData.toppings.ham}
                 onChange={handleToppings}
               />
